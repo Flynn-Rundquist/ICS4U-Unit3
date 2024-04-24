@@ -19,6 +19,10 @@ function reverseString(stringToReverse: string): string {
 }
 
 const aString = "recursion"
+const anotherString = "racecar"
+const thirdString = "hello"
 console.log(`The reverse of ${aString} is ${reverseString(aString)}`)
+console.log(`The reverse of ${anotherString} is ${reverseString(anotherString)}`)
+console.log(`The reverse of ${thirdString} is ${reverseString(thirdString)}`)
 
 console.log("\nDone.")
