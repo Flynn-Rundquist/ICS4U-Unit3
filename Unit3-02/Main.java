@@ -34,7 +34,7 @@ public class Main {
      */
     public static void main(String[] args) {
         final Scanner input = new Scanner(System.in);
-        System.out.println("Enter a number to find the factorial of:");
+        System.out.print("Enter a number to find the factorial of: ");
         final int number = input.nextInt();
 
         if (number < 0) {
