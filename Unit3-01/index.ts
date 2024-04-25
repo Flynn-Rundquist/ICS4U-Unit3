@@ -9,7 +9,7 @@
 
 // reverse the string using recursion
 function reverseString(stringToReverse: string): string {
-    if (stringToReverse === '') {
+    if (stringToReverse == '') {
         return ''
     } else {
         let firstChar = stringToReverse[0]
