@@ -10,7 +10,7 @@ import { createPrompt } from 'bun-promptx'
 
 // binary search function
 function binarySearch(userArray: Array<number>, userNum: number, lowIndex: number, hihgIndex: number) {
-    // find midInex, Math.floor rounds down
+    // find midIndex, Math.floor rounds down
     let midIndex = Math.floor((lowIndex + hihgIndex) / 2)
 
     // check if the number is found
@@ -33,11 +33,11 @@ for (let counter = 0; counter < 250; counter++) {
     userArray[counter] = Math.floor(Math.random() * 999)
 }
 
-// sort the array
+// sort the array, low num to high num
 userArray.sort((a, b) => a - b)
 console.log(`Sorted list of numbers:`)
 
-// print the array, with the numbers separated by commas
+// print the array. join separates them by commas
 console.log(userArray.join(", "))
 
 // get user input
