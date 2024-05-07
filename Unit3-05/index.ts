@@ -3,14 +3,30 @@
  *
  * By: Flynn Rundquist
  * Version: 1.0
- * Since: 2024-05-06
+ * Since: 2024-05-07
  */
 
-import { createPrompt } from 'bun-promptx'
+// find all magic squares
+function findMagicSquares(square: number[], index: number) {
+    for (let counter = 0; counter < 9; counter++) {
+        numProcess++
+        square[index] = counter
 
-// get user input
-const userInput = createPrompt("Enter the sum of the magic square: ")
-let inputNumber = parseInt(userInput.value)
+        if (index < 8) {
+            findMagicSquares(square, index + 1)
+        } else {
+            if (isMagicSquare(square) == true) {
+                numOfSquares++
+                printSquare(square)
+            }
+        }
+    }
+}
+
+// set magicNumber sum
+const magicSum = 15
+let numProcess = 0
+let numOfSquares = 0
 
 // check if array is a magic square
 function isMagicSquare(square: number[]) {
@@ -22,18 +38,35 @@ function isMagicSquare(square: number[]) {
     const col3 = square[2] + square[5] + square[8]
     const diag1 = square[0] + square[4] + square[8]
     const diag2 = square[2] + square[4] + square[6]
-    const diag3 = square[0] + square[3] + square[6]
 
-    if (row1 == inputNumber && row2 == inputNumber && row3 == inputNumber
-        && col1 == inputNumber && col2 == inputNumber && col3 == inputNumber
-        && diag1 == inputNumber && diag2 == inputNumber && diag3 == inputNumber) {
-        return true
-    } else {
-        return false
+    return (
+        row1 === magicSum &&
+        row2 === magicSum &&
+        row3 === magicSum &&
+        col1 === magicSum &&
+        col2 === magicSum &&
+        col3 === magicSum &&
+        diag1 === magicSum &&
+        diag2 === magicSum
+    )
+}
+
+// print square
+function printSquare(outputSquare: number[]) {
+    console.log("\n*****")
+
+    for (let count = 0; count < outputSquare.length; count++) {
+        if (count === 3 || count === 6) {
+            console.log()
+            console.log(outputSquare[count] + " ")
+        } else {
+            console.log(outputSquare[count] + " ")
+        }
     }
 }
 
-// find all magic squares
-function findMagicSquares() {
-    
-}
+// main
+let magicSquare: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+findMagicSquares(magicSquare, 0);
+console.log("\nNumber of processes: " + numProcess);
+console.log("\nDone")
