@@ -10,12 +10,12 @@
 function findMagicSquares(square: number[], index: number) {
     for (let counter = 0; counter < 9; counter++) {
         numProcess++
-        square[index] = counter
+        square[index] = counter + 1
 
         if (index < 8) {
             findMagicSquares(square, index + 1)
         } else {
-            if (isMagicSquare(square) == true) {
+            if (isMagicSquare(square)) {
                 numOfSquares++
                 printSquare(square)
             }
@@ -24,30 +24,29 @@ function findMagicSquares(square: number[], index: number) {
 }
 
 // set magicNumber sum
-const magicSum = 15
 let numProcess = 0
 let numOfSquares = 0
 
 // check if array is a magic square
-function isMagicSquare(square: number[]) {
-    const row1 = square[0] + square[1] + square[2]
-    const row2 = square[3] + square[4] + square[5]
-    const row3 = square[6] + square[7] + square[8]
-    const col1 = square[0] + square[3] + square[6]
-    const col2 = square[1] + square[4] + square[7]
-    const col3 = square[2] + square[5] + square[8]
-    const diag1 = square[0] + square[4] + square[8]
-    const diag2 = square[2] + square[4] + square[6]
-
+function isMagicSquare(preSquare: number[]) {
+    const row1 = preSquare[0] + preSquare[1] + preSquare[2]
+    const row2 = preSquare[3] + preSquare[4] + preSquare[5]
+    const row3 = preSquare[6] + preSquare[7] + preSquare[8]
+    const col1 = preSquare[0] + preSquare[3] + preSquare[6]
+    const col2 = preSquare[1] + preSquare[4] + preSquare[7]
+    const col3 = preSquare[2] + preSquare[5] + preSquare[8]
+    const diag1 = preSquare[0] + preSquare[4] + preSquare[8]
+    const diag2 = preSquare[2] + preSquare[4] + preSquare[6]
+    const magicSum = 15
     return (
-        row1 === magicSum &&
-        row2 === magicSum &&
-        row3 === magicSum &&
-        col1 === magicSum &&
-        col2 === magicSum &&
-        col3 === magicSum &&
-        diag1 === magicSum &&
-        diag2 === magicSum
+        row1 == magicSum &&
+        row2 == magicSum &&
+        row3 == magicSum &&
+        col1 == magicSum &&
+        col2 == magicSum &&
+        col3 == magicSum &&
+        diag1 == magicSum &&
+        diag2 == magicSum
     )
 }
 
@@ -56,17 +55,16 @@ function printSquare(outputSquare: number[]) {
     console.log("\n*****")
 
     for (let count = 0; count < outputSquare.length; count++) {
-        if (count === 3 || count === 6) {
+        if (count % 3 == 0 && count != 0) {
             console.log()
-            console.log(outputSquare[count] + " ")
-        } else {
-            console.log(outputSquare[count] + " ")
         }
+        console.log(outputSquare[count])
     }
+    console.log("\n*****")
 }
 
-// main
-let magicSquare: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-findMagicSquares(magicSquare, 0);
-console.log("\nNumber of processes: " + numProcess);
+// initialise array
+const square: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+console.log("Magic Squares\n")
+findMagicSquares(square, 0)
 console.log("\nDone")
