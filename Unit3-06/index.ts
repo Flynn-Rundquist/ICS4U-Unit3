@@ -35,7 +35,8 @@ function merge(left: number[], right: number[]): number[] {
             rightIndex++
         }
     }
-    // concat combines arrays
+    // combine the two arrays into a sorted array
+    // concat adds the two arrays together
     return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex))
 }
 
