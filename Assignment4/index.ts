@@ -1,6 +1,6 @@
 /**
  * This function finds the palindrome depth of all
- * teo digit numbers.
+ * two digit numbers.
  *
  * By: Flynn Rundquist
  * Version: 1.0
@@ -10,16 +10,11 @@
 
 // finds palindrome depth using recursion
 function findDepth(userInput: number, depth: number = 0) {
-    if (isPalindrome(userInput)) {
+    if (userInput == reverseNumber(userInput)) {
         return depth
     } else {
         return findDepth(userInput + reverseNumber(userInput), depth + 1)
     }
-}
-
-// checks if a number is a palindrome
-function isPalindrome(numberTest: number) {
-    return numberTest == reverseNumber(numberTest)
 }
 
 // reverses the number
